@@ -13,14 +13,25 @@
         "style": "npx stylelint **/*.css",
         "style:fix": "npx stylelint **/*.css --fix",
         "preview": "vite preview",
-        "prepare": "husky"
+        "prepare": "husky",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build"
     },
     "dependencies": {
         "react": "^18.3.1",
         "react-dom": "^18.3.1"
     },
     "devDependencies": {
+        "@chromatic-com/storybook": "^1.7.0",
         "@eslint/js": "^9.9.0",
+        "@storybook/addon-essentials": "^8.2.9",
+        "@storybook/addon-interactions": "^8.2.9",
+        "@storybook/addon-links": "^8.2.9",
+        "@storybook/addon-onboarding": "^8.2.9",
+        "@storybook/blocks": "^8.2.9",
+        "@storybook/react": "^8.2.9",
+        "@storybook/react-vite": "^8.2.9",
+        "@storybook/test": "^8.2.9",
         "@testing-library/jest-dom": "^6.4.8",
         "@testing-library/react": "^16.0.0",
         "@testing-library/user-event": "^14.5.2",
@@ -34,11 +45,13 @@
         "eslint-plugin-react": "^7.35.0",
         "eslint-plugin-react-hooks": "^5.1.0-rc.0",
         "eslint-plugin-react-refresh": "^0.4.9",
+        "eslint-plugin-storybook": "^0.8.0",
         "globals": "^15.9.0",
         "husky": "^9.1.5",
         "jsdom": "^24.1.1",
         "lint-staged": "^15.2.9",
         "prettier": "3.3.3",
+        "storybook": "^8.2.9",
         "stylelint": "^16.8.2",
         "stylelint-config-idiomatic-order": "^10.0.0",
         "stylelint-config-standard": "^36.0.1",
@@ -50,5 +63,11 @@
         "vite-plugin-checker": "^0.7.2",
         "vite-tsconfig-paths": "^5.0.1",
         "vitest": "^2.0.5"
+    },
+    "packageManager": "pnpm@9.8.0+sha512.8e4c3550fb500e808dbc30bb0ce4dd1eb614e30b1c55245f211591ec2cdf9c611cabd34e1364b42f564bd54b3945ed0f49d61d1bbf2ec9bd74b866fcdc723276",
+    "eslintConfig": {
+        "extends": [
+            "plugin:storybook/recommended"
+        ]
     }
 }
