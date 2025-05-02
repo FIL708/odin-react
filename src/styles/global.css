@@ -1,0 +1,21 @@
+:root {
+    --main-color: #3d81ff;
+    --main-hover-color: #0f5ff3;
+    --bgc-color: #ebeef2;
+    --container-bgc-color: #edeef0;
+    --border-color: #b2b8c2;
+    --font-color: #111212;
+    --font-button-color: #fff;
+    --accept-color: #429e20;
+    --accept-hover-color: #217c00;
+    --disabled-color: #aab4aa;
+    --disabled-font-color: #ecf1ec;
+    --error-color: #b02013;
+    --border-radius: 0.5rem;
+}
+
+* {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}

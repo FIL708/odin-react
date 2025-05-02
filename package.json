@@ -15,7 +15,8 @@
         "preview": "vite preview",
         "prepare": "husky",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
+        "build-storybook": "storybook build",
+        "create-component": "node scripts/createComponent.cjs"
     },
     "dependencies": {
         "react": "^18.3.1",

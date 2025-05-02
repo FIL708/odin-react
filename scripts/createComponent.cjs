@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const componentName = process.argv[2]
+let componentName = process.argv[2]
 
 if (!componentName) {
     console.log('\n' + '\x1b[41m 💀 Error \x1b[0m')
@@ -9,14 +9,16 @@ if (!componentName) {
     process.exit(1)
 }
 
+const formattedComponentName = String(componentName).charAt(0).toUpperCase() + String(componentName).slice(1)
+
 const componentsDir = path.join(__dirname, '..', 'src', 'components')
 
-const newComponentDir = path.join(componentsDir, componentName)
+const newComponentDir = path.join(componentsDir, formattedComponentName)
 
 if (fs.existsSync(newComponentDir)) {
     console.log(
         '\n',
-        `\x1b[45m 🧊 ${componentName} \x1b[0m` + '\x1b[41m 💀 Error \x1b[0m'
+        `\x1b[45m 🧊 ${formattedComponentName} \x1b[0m` + '\x1b[41m 💀 Error \x1b[0m'
     )
     console.error(' Such a component already exists!')
     console.log(` ${newComponentDir} \n`)
@@ -31,55 +33,55 @@ if (!fs.existsSync(componentsDir)) {
 fs.mkdirSync(newComponentDir)
 console.log(
     '\n',
-    `\x1b[45m 🧊 ${componentName} \x1b[0m` + '\x1b[44m 💀 Creating... \x1b[0m'
+    `\x1b[45m 🧊 ${formattedComponentName} \x1b[0m` + '\x1b[44m 💀 Creating... \x1b[0m'
 )
 console.log(' 📁 Directory for component files created successfully...')
 console.log(`    \x1b[34m${newComponentDir}\x1b[0m \n`)
 
-const componentContent = `import './${componentName}.css';
+const componentContent = `import './${formattedComponentName}.css';
 
-const ${componentName} = () => {
+const ${formattedComponentName} = () => {
   return (
-    <div className="${componentName.toLowerCase()}">
-      ${componentName} Component
+    <div className="${formattedComponentName.toLowerCase()}">
+      ${formattedComponentName} Component
     </div>
   );
 };
 
-export default ${componentName};
+export default ${formattedComponentName};
 `
-const cssContent = `.${componentName.toLowerCase()} {
-    /* Style for the ${componentName} component */
+const cssContent = `.${formattedComponentName.toLowerCase()} {
+    /* Style for the ${formattedComponentName} component */
   }
 `
 
-const indexContent = `export { default } from './${componentName}';
+const indexContent = `export { default } from './${formattedComponentName}';
 `
 
 const unitTestContent = `import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import ${componentName} from './${componentName}';
+import ${formattedComponentName} from './${formattedComponentName}';
 
-describe('${componentName}', () => {
+describe('${formattedComponentName}', () => {
     it('should render properly', () => {
-      render(<${componentName} />);
-      const element = screen.getByText('${componentName} Component');
+      render(<${formattedComponentName} />);
+      const element = screen.getByText('${formattedComponentName} Component');
       expect(element).toBeInTheDocument();
     });
 });
 `
 
 const storybookContent = `import type { Meta, StoryObj } from '@storybook/react'
-import ${componentName} from './${componentName}'
+import ${formattedComponentName} from './${formattedComponentName}'
 
-const meta: Meta<typeof ${componentName}> = {
-    component: ${componentName},
-    title: '${componentName}',
+const meta: Meta<typeof ${formattedComponentName}> = {
+    component: ${formattedComponentName},
+    title: '${formattedComponentName}',
 }
 
 export default meta
 
-type Story = StoryObj<typeof ${componentName}>
+type Story = StoryObj<typeof ${formattedComponentName}>
 
 export const Primary: Story = {
     args: {},
@@ -106,29 +108,30 @@ const createFile = (dir, fileName, content, type, icon) => {
 
 createFile(
     newComponentDir,
-    `${componentName}.tsx`,
+    `${formattedComponentName}.tsx`,
     componentContent,
     'component',
     '🧊'
 )
 createFile(
     newComponentDir,
-    `${componentName}.css`,
+    `${formattedComponentName}.css`,
     cssContent,
     'styles',
     '🎨'
 )
 createFile(newComponentDir, 'index.ts', indexContent, 'index', '🚗')
+
 createFile(
     newComponentDir,
-    `${componentName}.spec.tsx`,
+    `${formattedComponentName}.spec.tsx`,
     unitTestContent,
     'tests',
     '🧪'
 )
 createFile(
     newComponentDir,
-    `${componentName}.stories.tsx`,
+    `${formattedComponentName}.stories.tsx`,
     storybookContent,
     'stories',
     '📖'
@@ -136,6 +139,6 @@ createFile(
 
 console.log(
     '\n',
-    `\x1b[45m 🧊 ${componentName} \x1b[0m` +
+    `\x1b[45m 🧊 ${formattedComponentName} \x1b[0m` +
         '\x1b[42m Components files created successfully 🎉🎉🎉 \x1b[0m'
 )

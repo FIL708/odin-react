@@ -11,5 +11,21 @@ export default meta
 type Story = StoryObj<typeof Button>
 
 export const Primary: Story = {
-    args: {},
+    args: {
+        text: 'Primary',
+    },
+}
+
+export const Accept: Story = {
+    args: {
+        text: 'Accept',
+        accept: true,
+    },
+}
+
+export const Disabled: Story = {
+    args: {
+        text: 'Accept',
+        disabled: true,
+    },
 }

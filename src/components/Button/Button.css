@@ -1,3 +1,33 @@
 .button {
-    /* Style for the Button component */
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius);
+    background-color: var(--main-color);
+    color: var(--font-button-color);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background-color: var(--main-hover-color);
+}
+
+.button:active {
+    background-color: var(--main-color);
+}
+
+.button.accept {
+    background-color: var(--accept-color);
+}
+
+.button.accept:hover {
+    background-color: var(--accept-hover-color);
+}
+
+.button.accept:active {
+    background-color: var(--accept-color);
+}
+
+.button:disabled {
+    background-color: var(--disabled-color);
+    color: var(--disabled-font-color);
 }
